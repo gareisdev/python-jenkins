@@ -1,15 +1,28 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
         stage('Test') {
+
+            agent {
+                docker {
+                    image 'python:3.11-buster' 
+                }
+            }
+
             steps {
+                sh 'python3 -m venv venv'
                 sh 'pip install -r requirements.txt'
                 sh 'pytest tests/test.py'
             }
         }
 
         stage('Build') {
+            agent {
+                docker {
+                    image 'python:3.11-buster' 
+                }
+            }
             steps {
                 script {
                     // Define las variables necesarias
