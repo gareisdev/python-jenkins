@@ -5,7 +5,7 @@ pipeline {
         stage('Test') {
 
             agent {
-                dockerContainer {
+                docker {
                     image 'python:3.11-buster' 
                 }
            }
@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build') {
             agent {
-                dockerContainer {
+                docker {
                     image 'python:3.11-buster' 
                 }
             }
