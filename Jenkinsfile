@@ -5,10 +5,10 @@ pipeline {
         stage('Test') {
 
             agent {
-                docker {
+                dockerContainer {
                     image 'python:3.11-buster' 
                 }
-            }
+           }
 
             steps {
                 sh 'python3 -m venv venv'
@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build') {
             agent {
-                docker {
+                dockerContainer {
                     image 'python:3.11-buster' 
                 }
             }
